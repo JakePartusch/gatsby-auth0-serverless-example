@@ -11,13 +11,12 @@ const Index = () => {
   }
 
   const user = getProfile()
-  console.log(user)
 
   return (
     <>
       <Navbar user={user.name} />
       <Container>
-        <CheckboxList />
+        <CheckboxList username={user.nickname} />
       </Container>
     </>
   )

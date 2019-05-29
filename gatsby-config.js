@@ -11,4 +11,8 @@ module.exports = {
       options: {},
     },
   ],
+  proxy: {
+    prefix: "/dev",
+    url: "https://pl8m4oh96g.execute-api.us-east-1.amazonaws.com",
+  },
 }

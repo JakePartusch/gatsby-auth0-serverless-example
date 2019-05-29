@@ -17,6 +17,7 @@
     "@material-ui/styles": "^4.0.1",
     "@reach/router": "^1.2.1",
     "auth0-js": "^9.10.4",
+    "axios": "^0.18.0",
     "gatsby": "^2.7.3",
     "gatsby-plugin-material-ui": "^2.0.1",
     "react": "^16.8.6",
