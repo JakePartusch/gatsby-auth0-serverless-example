@@ -19,17 +19,20 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function CheckboxList({ username }) {
+function CheckboxList({ user }) {
   const classes = useStyles()
   const [newItem, setNewItem] = React.useState("")
   const [todos, setTodos] = React.useState([])
 
   const fetchData = async () => {
     const { data: todosResponse } = await axios.get(
-      `/dev/user/${username}/todos`
+      `/dev/user/${user.email}/todos`,
+      { headers: { Authorization: `Bearer ${user.idToken}` } }
     )
     console.log(todosResponse)
-    setTodos(todosResponse.data)
+    if (todosResponse && todosResponse.data && todosResponse.data.length > 0) {
+      setTodos(todosResponse.data)
+    }
   }
 
   useEffect(() => {
@@ -39,7 +42,9 @@ function CheckboxList({ username }) {
   const handleToggle = value => async () => {
     let updatedTodos = [...todos]
     updatedTodos[value].isComplete = !updatedTodos[value].isComplete
-    await axios.post(`/dev/user/${username}/todos`, updatedTodos)
+    await axios.post(`/dev/user/${user.email}/todos`, updatedTodos, {
+      headers: { Authorization: `Bearer ${user.idToken}` },
+    })
     setTodos(updatedTodos)
   }
 
@@ -48,7 +53,9 @@ function CheckboxList({ username }) {
       description: newItem,
       isComplete: false,
     })
-    await axios.post(`/dev/user/${username}/todos`, updatedTodos)
+    await axios.post(`/dev/user/${user.email}/todos`, updatedTodos, {
+      headers: { Authorization: `Bearer ${user.idToken}` },
+    })
     setTodos(updatedTodos)
     setNewItem("")
   }

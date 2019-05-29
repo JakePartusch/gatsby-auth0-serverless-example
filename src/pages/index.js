@@ -14,9 +14,9 @@ const Index = () => {
 
   return (
     <>
-      <Navbar user={user.name} />
+      <Navbar name={user.name} />
       <Container>
-        <CheckboxList username={user.nickname} />
+        <CheckboxList user={user} />
       </Container>
     </>
   )

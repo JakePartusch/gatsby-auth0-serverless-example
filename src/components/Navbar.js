@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function ButtonAppBar(props) {
+function ButtonAppBar({ name }) {
   const classes = useStyles()
   return (
     <div className={classes.root}>
@@ -29,7 +29,7 @@ function ButtonAppBar(props) {
               🎉
             </span>
           </Typography>
-          <Button color="inherit">Logged in as: {props.user}</Button>
+          <Button color="inherit">Logged in as: {name}</Button>
         </Toolbar>
       </AppBar>
     </div>
