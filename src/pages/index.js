@@ -1,4 +1,5 @@
 import React from "react"
+import Navbar from "../components/Navbar"
 import { login, isAuthenticated, getProfile } from "../utils/auth"
 
 const Index = () => {
@@ -10,7 +11,7 @@ const Index = () => {
   const user = getProfile()
   console.log(user)
 
-  return <p>Hi, {user.name ? user.name : "friend"}!</p>
+  return <Navbar user={user.name} />
 }
 
 export default Index
